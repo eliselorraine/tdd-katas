@@ -27,6 +27,4 @@ const pairElement = (str) => {
   return result;
 };
 
-console.log(pairElement('ATCGA')); 
-
 module.exports = pairElement;
