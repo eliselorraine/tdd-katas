@@ -4,35 +4,33 @@ const vowelCheck = (str) => {
   return check;
 };
 
-const translatePigLatin = (str) => {
+const beginsWithConsonant = (str) => {
   let result = str;
   let substring = "";
-  const beginsWithVowel = /^[aeiou]/gm;
-  const end = "ay";
-  const check = vowelCheck(result);
+  let end = "";
   let index = 1;
-  while (!check && index < result.length) {
+  while (!vowelCheck(result) && index < str.length + 1) {
     result = str.slice(index);
     substring = str.substring(0, index);
+    end = "ay";
     index++;
   }
   result = result.concat(substring, end);
   return result;
 };
 
-console.log(translatePigLatin("california"));
+const beginsWithVowel = (str) => {
+  return str.concat("way");
+};
+
+const translatePigLatin = (str) => {
+  let result;
+  if (vowelCheck(str)) {
+    result = beginsWithVowel(str);
+  } else if (!vowelCheck(str)) {
+    result = beginsWithConsonant(str);
+  }
+  return result;
+};
 
 module.exports = translatePigLatin;
-
-// let index = 1;
-// if (!vowelCheck) {
-//   result = str.slice(index);
-//   substring = str.substring(0, index);
-//   index++;
-// }
-// if (!vowelCheck) {
-//   result = str.slice(index);
-//   substring = str.substring(0, index);
-//   index++;
-// }
-// result = result.concat(substring, end);

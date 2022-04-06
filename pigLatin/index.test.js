@@ -13,4 +13,16 @@ describe('Translate Pig Latin function', () => {
         const expected = "oveglay"; 
         expect(translatePigLatin("glove")).toStrictEqual(expected); 
     })
+    it('should handle words that begin with vowels', () => {
+        const expected = "algorithmway"; 
+        expect(translatePigLatin("algorithm")).toStrictEqual(expected); 
+    })
+    it('should handle words that have their first vowel in the middle', () => {
+        const expected = "artzschway"; 
+        expect(translatePigLatin("schwartz")).toStrictEqual(expected); 
+    })
+    it('should handle words without vowels', () => {
+        const expected = "rhythmay"; 
+        expect(translatePigLatin("rhythm")).toStrictEqual(expected); 
+    })
 })
