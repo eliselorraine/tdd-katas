@@ -5,42 +5,53 @@ const whatIsInAName = (collection, source) => {
     arr = collection.filter((obj) => obj.last === source.last);
     return arr;
   } else if (sourceKeys.length > 1) {
-    arr = matches(collection, source);
+    arr = sourceConditions(collection, source);
     return arr;
   }
   return arr;
 };
 
-const matches = (collection, source) => {
-  let answer = [];
+
+// Consider each key-value pair in the source a condition.
+
+const sourceConditions = (collection, source) => {
+  let answer = collection;
   const sourceKeys = Object.keys(source);
   const sourceValues = Object.values(source);
   collection.forEach((obj, i) => {
-    const collectionKeys = Object.keys(obj);
-    const collectionValues = Object.values(obj);
-    for (let j = 0; j < collectionKeys.length; j++) {
-      if (
-        collectionKeys[j] === sourceKeys[j] &&
-        collectionValues[j] === sourceValues[j]
-      ) {
-        answer.push(collection[i]);
+      const collectionKeys = Object.keys(obj);
+      const collectionValues = Object.values(obj);
+      
+      for (let j = 0; j < sourceKeys.length; j++) {
+          const keyCheck = collectionKeys.find((key) => key === sourceKeys[j]);
+          if (keyCheck === undefined) {
+              answer = answer.filter((element) => element !== obj);
         return;
-      } 
     }
+}
   });
   return answer;
 };
-let morePairs = whatIsInAName(
-    [
-      { "apple": 1, "bat": 2 }, 
-      { "apple": 1 }, 
-      { "apple": 1, "bat": 2, "cookie": 2 }
-    ], 
-    { "apple": 1, "cookie": 2 }
-    ) 
 
-console.log(
-  morePairs
-);
-
-module.exports = whatIsInAName;
+    
+    module.exports = whatIsInAName;
+    
+    // const matches = (collection, source) => {
+    //   let answer = [];
+    //   const sourceKeys = Object.keys(source);
+    //   const sourceValues = Object.values(source);
+    //   collection.forEach((obj, i) => {
+    //     const collectionKeys = Object.keys(obj);
+    //     const collectionValues = Object.values(obj);
+    //     for (let j = 0; j < collectionKeys.length; j++) {
+    //       if (
+    //         collectionKeys[j] === sourceKeys[j] &&
+    //         collectionValues[j] === sourceValues[j]
+    //       ) {
+    //         answer.push(collection[i]);
+    //         return;
+    //       }
+    //     }
+    //   });
+    //   return answer;
+    // };
