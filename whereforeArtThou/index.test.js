@@ -44,14 +44,20 @@ describe("Wherefore art thou", () => {
 
   it("should not be affected by order of key-value pairs", () => {
     let morePairs = whatIsInAName(
-      [
-        { "apple": 1, "bat": 2 }, 
-        { "apple": 1 }, 
-        { "apple": 1, "bat": 2, "cookie": 2 }
-      ], 
-      { "apple": 1, "cookie": 2 }
-      ) 
-      const expected = [{ "apple": 1, "bat": 2, "cookie": 2 }]
-      expect(morePairs).toStrictEqual(expected);
-  })
+      [{ apple: 1, bat: 2 }, { apple: 1 }, { apple: 1, bat: 2, cookie: 2 }],
+      { apple: 1, cookie: 2 }
+    );
+    const expected = [{ apple: 1, bat: 2, cookie: 2 }];
+    expect(morePairs).toStrictEqual(expected);
+  });
+
+  it("should compare values as well as keys", () => {
+    let diffValues = whatIsInAName([{ a: 1, b: 2, c: 3 }], {
+      a: 1,
+      b: 9999,
+      c: 3,
+    });
+    const expected = [];
+    expect(diffValues).toStrictEqual(expected);
+  });
 });
