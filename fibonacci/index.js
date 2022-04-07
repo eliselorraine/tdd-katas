@@ -21,9 +21,6 @@ const addLastTwo = (arr) => {
   return arr;
 };
 
-console.log(sumFibs(75025));
-console.log(sumFibs(75024));
-
 module.exports = sumFibs;
 
 // const array1 = [1, 2, 3, 4];
