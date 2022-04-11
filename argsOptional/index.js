@@ -2,7 +2,6 @@ const addTogether = (...args) => {
   const arrayOfArgs = [...args];
   const first = arrayOfArgs[0];
   const second = arrayOfArgs[1];
-  console.log(arrayOfArgs);
   let sum;
   if (arrayOfArgs.length > 1 && isNumber(first) && isNumber(second)) {
     sum = arrayOfArgs[0] + arrayOfArgs[1];
