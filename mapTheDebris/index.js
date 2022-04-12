@@ -1,9 +1,7 @@
 const orbitalPeriod = (arr) => {
-  console.log(getOrbitalPeriod({ name: "iss", avgAlt: 413.6 }));
   const mapped = arr.map((object) => {
     return getOrbitalPeriod(object);
   });
-  console.log(mapped);
   return mapped;
 };
 
