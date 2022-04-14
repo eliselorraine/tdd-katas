@@ -13,10 +13,6 @@ const telephoneCheck = (str) => {
   return false;
 };
 
-// has to be either 10 or 11 digits
-// if 11, the first index has to be 1
-// if not 11, the length has to be 10
-
 console.log(telephoneCheck("1 (123) 456-7890"));
 
 module.exports = telephoneCheck;
