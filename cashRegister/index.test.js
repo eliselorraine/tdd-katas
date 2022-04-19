@@ -57,4 +57,19 @@ describe("the cash register function", () => {
       ],
     });
   });
+  it("should return Insufficient Funds if amount in cash drawer is less than change due", () => {
+    expect(
+      checkCashRegister(19.5, 20, [
+        ["PENNY", 0.01],
+        ["NICKEL", 0],
+        ["DIME", 0],
+        ["QUARTER", 0],
+        ["ONE", 0],
+        ["FIVE", 0],
+        ["TEN", 0],
+        ["TWENTY", 0],
+        ["ONE HUNDRED", 0],
+      ])
+    ).toStrictEqual({ status: "INSUFFICIENT_FUNDS", change: [] });
+  });
 });

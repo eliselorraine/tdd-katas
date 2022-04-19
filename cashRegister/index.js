@@ -1,31 +1,47 @@
 const checkCashRegister = (price, cash, cid) => {
   let transaction = { status: "OPEN", change: cid };
   let difference = 0;
-
+  let total = getTotal(cid);
+  console.log(total);
   if (price === cash) {
     transaction.status = "CLOSED";
     return transaction;
-  } else {
-    difference = cash - price;
-    transaction.change = changeDue(difference, cid);
   }
+  //   } else if (total < cash) {
+  //     transaction.status = "INSUFFICIENT_FUNDS";
+  //     transaction.change = [];
+  //   } else {
+  //     difference = cash - price;
+  //     transaction.change = changeDue(difference, cid);
+  //   }
 
-//   console.log(transaction, difference);
+  //   console.log(transaction, difference);
   return transaction;
 };
+const getTotal = (cid) => {
+  let amounts = [];
+  cid.forEach((arr) => amounts.push(arr[1]));
+  let total = 0;
 
+  for (let i = amounts.length - 1; i >= 0; i--) {
+    total += amounts[i];
+  }
+
+  return total;
+};
 const changeDue = (diff, cid) => {
   let difference = diff;
   let change = [];
-  for (let i = cid.length - 1; i >= 0; i--) {
-    let current = cid[i];
+  console.log(total);
+  //   for (let i = cid.length - 1; i >= 0; i--) {
+  //     let current = cid[i];
 
-    if (current[1] < difference) {
-      change.push(current);
-      difference = difference - current[1];
-    }
-    //   return change;
-  }
+  //     if (current[1] < difference) {
+  //       change.push(current);
+  //       difference = difference - current[1];
+  //     }
+  //   return change;
+  //   }
   //   if (diff % 0.25 === 0) {
   //     change.push(["QUARTER", diff]);
   //   }
