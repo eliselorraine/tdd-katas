@@ -72,7 +72,7 @@ describe("the cash register function", () => {
       ])
     ).toStrictEqual({ status: "INSUFFICIENT_FUNDS", change: [] });
   });
-  it("should return Insufficient Funds if amount in cash drawer is less than change due", () => {
+  it("should return Insufficient Funds if exact change is not available", () => {
     expect(
       checkCashRegister(19.5, 20, [
         ["PENNY", 0.01],
@@ -87,7 +87,7 @@ describe("the cash register function", () => {
       ])
     ).toStrictEqual({ status: "INSUFFICIENT_FUNDS", change: [] });
   });
-  it("should return Insufficient Funds if amount in cash drawer is less than change due", () => {
+  it("should return cid if exact change is in drawer", () => {
     expect(
       checkCashRegister(19.5, 20, [
         ["PENNY", 0.5],
