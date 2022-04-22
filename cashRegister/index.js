@@ -153,5 +153,5 @@ module.exports = checkCashRegister;
 //     arr.push([den, remainder * worth]);
 //     amount -= remainder * worth;
 //   }
-//   return; 
+//   return amount; 
 // };
